@@ -13,21 +13,21 @@ tc = Twitter::REST::Client.new do |conf|
 end
 
 post '/' do
-	if params[:token]==settings['token']
+	if params[:token]==settings['token'] then
 		ids = tc.follower_ids().to_a
 		cnt=(ids.size-1)/100+1
-		screen_names=[]
+		users=[]
 		cnt.times do
 			ids_tmp = ids.pop(100)
-			screen_names_tmp = tc.users(ids_tmp)
-			screen_names = push(screen_names_tmp)
+			users_tmp = tc.users(ids_tmp)
+			users.concat(users_tmp)
 		end
 
-		screen_names.each do |name|
-			tc.update("@#{name} #{settings.['reply_text']}")
+		users.each do |user|
+			tc.update("@#{user.screen_name} #{settings['reply_text']}")
 		end
 
-		{'text'=> settings.['slack_text'] }.to_json
+		{'text'=> settings['slack_text'] }.to_json
 	else
 		"Illigal Request"
 	end
