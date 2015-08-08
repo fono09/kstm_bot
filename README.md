@@ -1,9 +1,4 @@
-# uploader
-Main Service at uploader.fono.jp
+# kstm\_bot
 
-GET / => WebUI  
-GET /list => File list in JSON  
-POST /upload <= multipart/form-data file, comment, dlpass, and delpass => File id in JSON  
-GET /download/:id => File(dlpass == null)  
-POST /donwload/:id <= dlpass => File  
-
+Using Slack Outgoing Webhooks
+Send a reply on twitter to notificate when convoke comment has been posted.
