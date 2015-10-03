@@ -13,7 +13,7 @@ tc = Twitter::REST::Client.new do |conf|
 end
 
 post '/' do
-	if params[:token]==settings['token'] then
+	if params[:user_name] != settings['slack_name'] && params[:token]==settings['token'] then
 		ids = tc.follower_ids().to_a
 		cnt=(ids.size-1)/100+1
 		users=[]
