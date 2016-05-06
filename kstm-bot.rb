@@ -1,7 +1,6 @@
-require 'sinatra'
-require 'json'
+require 'bundler'
 require 'yaml'
-require 'twitter'
+Bundler.require
 
 settings = YAML.load_file('./settings.yaml')
 
